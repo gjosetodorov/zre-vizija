@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 
 const IMAGES = [
-    "/src/example_images/Untitled-1.jpg",
-    "/src/example_images/Untitled-2.jpg",
+    "/src/images/banner_images/slika1.png",
+    "/src/images/banner_images/slika2.png",
     "/src/example_images/Untitled-3.jpg",
 ];
 
 export default function Banner() {
     const [index, setIndex] = useState(0);
+    const [panelVisible, setPanelVisible] = useState(false);
 
     useEffect(() => {
-        const id = setInterval(() => {
+        const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % IMAGES.length);
         }, 4000);
-        return () => clearInterval(id);
+
+        const timeout = setTimeout(() => setPanelVisible(true), 100);
+
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
     }, []);
 
     return (
@@ -35,26 +42,33 @@ export default function Banner() {
                 ))}
             </div>
 
-            {/* WHITE DIAGONAL PANEL */}
-            <div className="absolute left-0 top-16 bottom-16 w-[40%] z-10">
-                <div className="h-full bg-white [clip-path:polygon(0_0,80%_0,100%_100%,0_100%)] flex flex-col justify-center px-12">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            {/* DIAGONAL PANEL */}
+            <div
+                className={`absolute left-0 top-16 bottom-16 w-[40%] z-10 transition-all duration-1000 ease-out
+    ${panelVisible ? "translate-x-0" : "-translate-x-20"}`}
+            >
+                <div
+                    className="h-full bg-linear-to-r from-purple-200 via-purple-100 to-blue-200
+        [clip-path:polygon(0_0,80%_0,100%_100%,0_100%)]
+        flex flex-col justify-center px-12"
+                >
+                    <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-purple-900 mb-4 leading-tight">
                         ЗРЕ Визија
                     </h1>
 
-                    <p className="text-lg text-gray-600 max-w-md">
+                    <p className="text-lg text-gray-900 max-w-md">
                         Здружение за родова еднаквост, еманципација на жените и спречување на родови базирано насилство.
                     </p>
                 </div>
             </div>
 
             {/* DOTS */}
-            <div className="absolute bottom-20 left-[67%] flex space-x-2 z-20">
+            <div className="absolute bottom-20 left-[68%] flex space-x-2 z-20">
                 {IMAGES.map((_, i) => (
                     <button
                         key={i}
                         onClick={() => setIndex(i)}
-                        className={`w-3 h-3 rounded-full transition-all ${
+                        className={`w-2 h-2 rounded-full transition-all ${
                             i === index ? "bg-white scale-125" : "bg-white/50"
                         }`}
                     />
