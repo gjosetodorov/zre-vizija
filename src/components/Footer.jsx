@@ -20,14 +20,19 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Линкови</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li><a href="/" className="text-purple-200 hover:text-white transition-colors">Дома</a></li>
-                            <li><a href="/za-nas" className="text-purple-200 hover:text-white transition-colors">За Нас</a></li>
-                            <li><a href="/sovetuvalishte" className="text-purple-200 hover:text-white transition-colors">Советувалиште</a></li>
-                            <li><a href="/kontakt" className="text-purple-200 hover:text-white transition-colors">Контакт</a></li>
-                        </ul>
+                    <div className="flex gap-8">
+                        <div className="space-y-2 text-sm w-1/2">
+                            <h4 className="text-lg font-semibold mb-4">Линкови</h4>
+                            <a href="/" className="text-purple-200 hover:text-white transition-colors block">Дома</a>
+                            <a href="/za-nas" className="text-purple-200 hover:text-white transition-colors block">За Нас</a>
+                            <a href="/sovetuvalishen-centar" className="text-purple-200 hover:text-white transition-colors block">Советувалишен центар</a>
+                        </div>
+                        <div className="space-y-2 text-sm w-1/2">
+                            <a href="/publikacii" className="text-purple-200 hover:text-white transition-colors block">Публикации</a>
+                            <a href="/galerija" className="text-purple-200 hover:text-white transition-colors block">Галерија</a>
+                            <a href="/donacii" className="text-purple-200 hover:text-white transition-colors block">Донации</a>
+                            <a href="/kontakt" className="text-purple-200 hover:text-white transition-colors block">Контакт</a>
+                        </div>
                     </div>
 
                     {/* Contact & Social */}
@@ -35,7 +40,7 @@ const Footer = () => {
                         <div className="space-y-2">
                             <div className="flex items-center gap-2 text-purple-200 text-sm">
                                 <Phone className="w-4 h-4" />
-                                +389 70 000 000
+                                +389 75 480 288
                             </div>
                             <div className="flex items-center gap-2 text-purple-200 text-sm">
                                 <Mail className="w-4 h-4" />

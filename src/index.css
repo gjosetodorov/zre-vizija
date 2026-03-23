@@ -1,27 +1,14 @@
 @import "tailwindcss";
 
-@layer utilities {
-    .animate-in {
-        animation-fill-mode: both;
-    }
-
-    .slide-in-from-top {
-        animation-name: slideInFromTop;
-    }
-
-    .duration-300 {
-        animation-duration: 300ms;
-    }
+@theme {
+    --animate-marquee: scrollLeft 22s linear infinite;
 }
 
-@keyframes slideInFromTop {
-    from {
-        opacity: 0;
-        transform: translateY(-1rem);
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+        transform: translateX(-50%);
     }
 }

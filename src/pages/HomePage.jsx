@@ -4,6 +4,7 @@ import DomesticViolenceStats from "../components/DomesticViolenceStats.jsx";
 import MissionVisionValues from "../components/MissionVisionValues.jsx";
 import ContactHome from "../components/ContactHome.jsx";
 import Footer from "../components/Footer.jsx";
+import Donators from "../components/Donators.jsx";
 
 export default function HomePage(){
     return (
@@ -11,8 +12,9 @@ export default function HomePage(){
             <Navbar />
             <Banner />
             <MissionVisionValues />
-            {/*<DomesticViolenceStats />*/}
+            <DomesticViolenceStats />
             <ContactHome />
+            <Donators />
             <Footer />
         </div>
     );

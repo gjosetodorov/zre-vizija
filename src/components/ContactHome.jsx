@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import {Phone, Mail, MapPin} from "lucide-react";
 
 const ContactHome = () => {
     return (
@@ -8,34 +8,56 @@ const ContactHome = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-6 text-purple-900">
-                        <h2 className="text-3xl font-bold">
-                            Контакт
-                        </h2>
+                        <h2 className="text-3xl font-bold">Контакт</h2>
 
                         <p className="text-gray-600 leading-relaxed">
-                            Контактирај те не.
+                            Контактирајте не.
                         </p>
 
                         <div className="space-y-4">
+                            {/* Company location */}
                             <div className="flex items-center gap-3">
-                                <MapPin className="text-gray-900 w-5 h-5"/>
-                                <span className="text-gray-900">
-                                    Kavadarci, North Macedonia
-                                </span>
+                                <MapPin className="text-gray-900 w-5 h-5" />
+                                <span className="text-gray-900">Kavadarci, North Macedonia</span>
                             </div>
 
+                            {/* Company phone */}
                             <div className="flex items-center gap-3">
-                                <Phone className="text-gray-900 w-5 h-5"/>
-                                <span className="text-gray-900">
-                                    +389 70 000 000
-                                </span>
+                                <Phone className="text-gray-900 w-5 h-5" />
+                                <span className="text-gray-900">+389 75 480 288</span>
                             </div>
 
+                            {/* Company email */}
                             <div className="flex items-center gap-3">
-                                <Mail className="text-gray-900 w-5 h-5"/>
+                                <Mail className="text-gray-900 w-5 h-5" />
                                 <span className="text-gray-900">
-                                    zrevizijakavadarci@yahoo.com
-                                </span>
+        <a href="mailto:zrevizijakavadarci@yahoo.com" className="hover:underline">
+          zrevizijakavadarci@yahoo.com
+        </a>
+      </span>
+                            </div>
+                        </div>
+
+                        {/* President section - perfectly aligned */}
+                        <div className="pt-6 border-t border-gray-900">
+                            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                                Претседателка – Благица Коцева-Тодорова
+                            </h3>
+
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <Phone className="text-gray-900 w-5 h-5 shrink-0" />
+                                    <span className="text-gray-900">+389 70 394 203</span>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <Mail className="text-gray-900 w-5 h-5 shrink-0" />
+                                    <span className="text-gray-900">
+          <a href="mailto:bkoceva@yahoo.com" className="hover:underline">
+            bkoceva@yahoo.com
+          </a>
+        </span>
+                                </div>
                             </div>
                         </div>
                     </div>

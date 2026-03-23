@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
     BarChart,
     Bar,
@@ -6,17 +6,17 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    CartesianGrid
+    CartesianGrid,
+    Cell
 } from "recharts";
 
 export default function DomesticViolenceStats() {
     const [data, setData] = useState([]);
     const [latest, setLatest] = useState(null);
+    const [sortBy, setSortBy] = useState("year");
 
     useEffect(() => {
         async function fetchStats() {
-
-            // Simulated API request (replace with real endpoint if available)
             const response = await new Promise((resolve) =>
                 setTimeout(() => {
                     resolve({
@@ -39,67 +39,112 @@ export default function DomesticViolenceStats() {
         fetchStats();
     }, []);
 
+    const sortedData = useMemo(() => {
+        const sorted = [...data];
+        if (sortBy === "cases") {
+            sorted.sort((a, b) => b.cases - a.cases);
+        } else {
+            sorted.sort((a, b) => a.year - b.year);
+        }
+        return sorted;
+    }, [data, sortBy]);
+
     return (
-        <section className="py-14 bg-linear-to-r from-purple-200 via-purple-100 to-blue-200">
-            <div className="max-w-4xl mx-auto px-6">
+        <section className="py-16">
+            <div className="max-w-6xl mx-auto px-4">
 
-                {/* TITLE */}
-                <h2 className="text-2xl font-bold text-purple-900 text-center mb-8">
-                    Семејно насилство во Северна Македонија
-                </h2>
+                <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-stretch">
 
-                {/* HIGHLIGHT CARD */}
-                {latest && (
-                    <div className="bg-white shadow-lg rounded-xl p-6 text-center mb-8 border border-purple-200">
-                        <div className="text-5xl font-bold text-purple-700">
-                            {latest.cases}
-                        </div>
+                    {/* LEFT - TEXT */}
+                    <div className="md:pr-10 border-b md:border-b-0 md:border-r border-gray-200 pb-8 md:pb-0 h-full">
+                        <h2 className="text-2xl font-bold text-purple-900 mb-4">
+                            Семејно насилство во Северна Македонија
+                        </h2>
 
-                        <p className="text-gray-700 mt-2">
-                            пријавени случаи во {latest.year}
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                            Тука можеш да додадеш текст — објаснување за податоците,
+                            причини, последици или што било релевантно.
                         </p>
 
-                        {latest.provisional && (
-                            <p className="text-sm text-orange-600 mt-1">
-                                * привремени податоци
-                            </p>
-                        )}
+                        <p className="text-gray-700 leading-relaxed">
+                            На пример: трендови низ годините, споредби, или повик за акција.
+                        </p>
                     </div>
-                )}
 
-                {/* GRAPH CARD */}
-                <div className="bg-white rounded-xl shadow-lg p-6 border border-purple-200">
+                    {/* RIGHT - STATS */}
+                    <div className="w-full md:pl-10 h-full">
 
-                    <ResponsiveContainer width="100%" height={250}>
-                        <BarChart data={data}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+                        {/* SORT */}
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-lg font-semibold text-gray-900">
+                                Статистика
+                            </h3>
 
-                            <XAxis dataKey="year" />
+                            <select
+                                value={sortBy}
+                                onChange={(e) => setSortBy(e.target.value)}
+                                className="border rounded-md px-2 py-1 text-sm"
+                            >
+                                <option value="year">По година</option>
+                                <option value="cases">По случаи</option>
+                            </select>
+                        </div>
 
-                            <YAxis />
+                        {/* HIGHLIGHT */}
+                        {latest && (
+                            <div className="mb-6 text-center">
+                                <div className="text-4xl font-bold text-purple-900">
+                                    {latest.cases}
+                                </div>
+                                <p className="text-sm text-gray-600">
+                                    случаи во {latest.year}
+                                </p>
+                                {latest.provisional && (
+                                    <p className="text-xs text-orange-500">
+                                        * привремени
+                                    </p>
+                                )}
+                            </div>
+                        )}
 
-                            <Tooltip
-                                contentStyle={{
-                                    borderRadius: "8px",
-                                    border: "1px solid #ddd"
-                                }}
-                            />
+                        {/* CHART */}
+                        <div className="w-full h-55">
+                            <ResponsiveContainer>
+                                <BarChart data={sortedData}>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+                                    <XAxis dataKey="year" />
+                                    <YAxis />
+                                    <Tooltip />
 
-                            <Bar
-                                dataKey="cases"
-                                fill="#7c3aed"
-                                radius={[6,6,0,0]}
-                            />
-                        </BarChart>
-                    </ResponsiveContainer>
+                                    <Bar
+                                        dataKey="cases"
+                                        radius={[6, 6, 0, 0]}
+                                        isAnimationActive
+                                        animationDuration={600}
+                                    >
+                                        {sortedData.map((entry, index) => (
+                                            <Cell
+                                                key={`cell-${index}`}
+                                                fill={
+                                                    entry.year === latest?.year
+                                                        ? "#4c1d95"
+                                                        : "#7c3aed"
+                                                }
+                                            />
+                                        ))}
+                                    </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+
+                        {/* SOURCE (CENTERED) */}
+                        <p className="text-sm text-gray-600 mt-4 text-center">
+                            Извор: Министерство за внатрешни работи / УНДП
+                        </p>
+
+                    </div>
 
                 </div>
-
-                {/* SOURCE */}
-                <p className="text-center text-gray-500 text-sm mt-4">
-                    Извор: Министерство за внатрешни работи / УНДП / Извештаи за родова еднаквост
-                </p>
-
             </div>
         </section>
     );

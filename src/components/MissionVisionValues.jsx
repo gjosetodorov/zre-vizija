@@ -59,7 +59,7 @@ const MissionVisionValues = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         Нашата <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Мисија</span>
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-700 leading-relaxed">
                         Your 1-2 sentences here.
                     </p>
                 </div>
@@ -79,7 +79,7 @@ const MissionVisionValues = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         Нашата <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Визија</span>
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-700 leading-relaxed">
                         Your 1-2 sentences here.
                     </p>
                 </div>
@@ -99,7 +99,7 @@ const MissionVisionValues = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         Нашите <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Вредности</span>
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-700 leading-relaxed">
                         Your 1-2 sentences here.
                     </p>
                 </div>
