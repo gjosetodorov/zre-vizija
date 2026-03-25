@@ -5,6 +5,7 @@ import MissionVisionValues from "../components/MissionVisionValues.jsx";
 import ContactHome from "../components/ContactHome.jsx";
 import Footer from "../components/Footer.jsx";
 import Donators from "../components/Donators.jsx";
+import AskForAdvice from "../components/AskForAdvice.jsx";
 
 export default function HomePage(){
     return (
@@ -13,6 +14,7 @@ export default function HomePage(){
             <Banner />
             <MissionVisionValues />
             <DomesticViolenceStats />
+            <AskForAdvice />
             <ContactHome />
             <Donators />
             <Footer />

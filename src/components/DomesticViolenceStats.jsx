@@ -50,13 +50,13 @@ export default function DomesticViolenceStats() {
     }, [data, sortBy]);
 
     return (
-        <section className="py-16">
+        <section className="bg-linear-to-r from-purple-200 via-purple-100 to-blue-200 py-16">
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-stretch">
 
                     {/* LEFT - TEXT */}
-                    <div className="md:pr-10 border-b md:border-b-0 md:border-r border-gray-200 pb-8 md:pb-0 h-full">
+                    <div className="md:pr-10 border-b md:border-b-0 md:border-r border-purple-200 pb-8 md:pb-0 h-full">
                         <h2 className="text-2xl font-bold text-purple-900 mb-4">
                             Семејно насилство во Северна Македонија
                         </h2>

@@ -17,53 +17,53 @@ const ContactHome = () => {
                         <div className="space-y-4">
                             {/* Company location */}
                             <div className="flex items-center gap-3">
-                                <MapPin className="text-gray-900 w-5 h-5" />
+                                <MapPin className="text-gray-900 w-5 h-5"/>
                                 <span className="text-gray-900">Kavadarci, North Macedonia</span>
                             </div>
 
                             {/* Company phone */}
                             <div className="flex items-center gap-3">
-                                <Phone className="text-gray-900 w-5 h-5" />
+                                <Phone className="text-gray-900 w-5 h-5"/>
                                 <span className="text-gray-900">+389 75 480 288</span>
                             </div>
 
                             {/* Company email */}
                             <div className="flex items-center gap-3">
-                                <Mail className="text-gray-900 w-5 h-5" />
+                                <Mail className="text-gray-900 w-5 h-5"/>
                                 <span className="text-gray-900">
-        <a href="mailto:zrevizijakavadarci@yahoo.com" className="hover:underline">
-          zrevizijakavadarci@yahoo.com
-        </a>
-      </span>
+                                     <a href="mailto:zrevizijakavadarci@yahoo.com" className="hover:underline">
+                                         zrevizijakavadarci@yahoo.com
+                                     </a>
+                                </span>
                             </div>
                         </div>
 
-                        {/* President section - perfectly aligned */}
-                        <div className="pt-6 border-t border-gray-900">
+                        {/* President section */}
+                        <div className="pt-6 border-t border-purple-200">
                             <h3 className="text-xl font-semibold text-gray-900 mb-3">
                                 Претседателка – Благица Коцева-Тодорова
                             </h3>
 
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3">
-                                    <Phone className="text-gray-900 w-5 h-5 shrink-0" />
+                                    <Phone className="text-gray-900 w-5 h-5 shrink-0"/>
                                     <span className="text-gray-900">+389 70 394 203</span>
                                 </div>
 
                                 <div className="flex items-center gap-3">
-                                    <Mail className="text-gray-900 w-5 h-5 shrink-0" />
+                                    <Mail className="text-gray-900 w-5 h-5 shrink-0"/>
                                     <span className="text-gray-900">
-          <a href="mailto:bkoceva@yahoo.com" className="hover:underline">
-            bkoceva@yahoo.com
-          </a>
-        </span>
+                                        <a href="mailto:bkoceva@yahoo.com" className="hover:underline">
+                                            bkoceva@yahoo.com
+                                        </a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Google Map */}
-                    <div className="bg-white/90 p-4 rounded-lg space-y-3"> {/* Light bg for map contrast */}
+                    <div className="bg-white/90 p-4 rounded-lg space-y-3">
                         <div className="w-full h-80">
                             <iframe
                                 title="Google Map"
