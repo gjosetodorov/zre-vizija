@@ -9,14 +9,16 @@ import AskForAdvice from "../components/AskForAdvice.jsx";
 
 export default function HomePage(){
     return (
-        <div className="min-h-screen bg-white">
+        <div className="flex min-h-screen flex-col bg-white">
             <Navbar />
-            <Banner />
-            <MissionVisionValues />
-            <DomesticViolenceStats />
-            <AskForAdvice />
-            <ContactHome />
-            <Donators />
+            <main className="flex-1">
+                <Banner />
+                <MissionVisionValues />
+                <DomesticViolenceStats />
+                <AskForAdvice />
+                <ContactHome />
+                <Donators />
+            </main>
             <Footer />
         </div>
     );

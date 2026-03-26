@@ -1,68 +1,86 @@
 import {
     Facebook,
     Instagram,
+    MapPin,
     Mail,
     Phone
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-linear-to-r from-purple-900 to-purple-800 text-white py-12 px-6">
-            <div className="max-w-6xl mx-auto">
-                <div className="grid md:grid-cols-3 gap-8 items-center text-center md:text-left">
-
-                    {/* Logo/Brand */}
-                    <div className="md:text-left">
-                        <h3 className="text-2xl font-bold mb-2">ЗРЕ Визија</h3>
-                        <p className="text-purple-200 text-sm leading-relaxed">
-                            Кавадарци, Северна Македонија
+        <footer className="mt-auto border-t border-purple-700/60 bg-linear-to-b from-purple-900 via-purple-900 to-purple-950 text-white">
+            <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
+                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="space-y-4 sm:col-span-2 lg:col-span-1">
+                        <h3 className="text-2xl font-extrabold tracking-wide">ЗРЕ Визија</h3>
+                        <p className="text-sm leading-7 text-purple-200">
+                            Поддршка, заштита и охрабрување за секоја жена и секое семејство.
                         </p>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div className="flex gap-8">
-                        <div className="space-y-2 text-sm w-1/2">
-                            <h4 className="text-lg font-semibold mb-4">Линкови</h4>
-                            <a href="/" className="text-purple-200 hover:text-white transition-colors block">Дома</a>
-                            <a href="/za-nas" className="text-purple-200 hover:text-white transition-colors block">За Нас</a>
-                            <a href="/sovetuvalishen-centar" className="text-purple-200 hover:text-white transition-colors block">Советувалишен центар</a>
-                        </div>
-                        <div className="space-y-2 text-sm w-1/2">
-                            <a href="/publikacii" className="text-purple-200 hover:text-white transition-colors block">Публикации</a>
-                            <a href="/galerija" className="text-purple-200 hover:text-white transition-colors block">Галерија</a>
-                            <a href="/donacii" className="text-purple-200 hover:text-white transition-colors block">Донации</a>
-                            <a href="/kontakt" className="text-purple-200 hover:text-white transition-colors block">Контакт</a>
+                        <div className="inline-flex items-center gap-2 rounded-full border border-purple-700/70 bg-purple-800/40 px-4 py-2 text-xs font-medium text-purple-100">
+                            <MapPin className="h-4 w-4" />
+                            Кавадарци, Северна Македонија
                         </div>
                     </div>
 
-                    {/* Contact & Social */}
-                    <div className="space-y-4">
-                        <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-purple-200 text-sm">
-                                <Phone className="w-4 h-4" />
+                    <div>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-purple-200">Навигација</h4>
+                        <nav className="space-y-3 text-sm">
+                            <Link to="/" className="block text-purple-100 transition-colors hover:text-white">Дома</Link>
+                            <Link to="/za-nas" className="block text-purple-100 transition-colors hover:text-white">За Нас</Link>
+                            <Link to="/sovetuvalishen-centar" className="block text-purple-100 transition-colors hover:text-white">Советувалишен центар</Link>
+                            <Link to="/kontakt" className="block text-purple-100 transition-colors hover:text-white">Контакт</Link>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-purple-200">Ресурси</h4>
+                        <nav className="space-y-3 text-sm">
+                            <Link to="/publikacii" className="block text-purple-100 transition-colors hover:text-white">Публикации</Link>
+                            <Link to="/galerija" className="block text-purple-100 transition-colors hover:text-white">Галерија</Link>
+                            <Link to="/donacii" className="block text-purple-100 transition-colors hover:text-white">Донации</Link>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-purple-200">Контакт</h4>
+                        <div className="space-y-3 text-sm text-purple-100">
+                            <p className="flex items-center gap-2">
+                                <Phone className="h-4 w-4 text-purple-300" />
                                 +389 75 480 288
-                            </div>
-                            <div className="flex items-center gap-2 text-purple-200 text-sm">
-                                <Mail className="w-4 h-4" />
+                            </p>
+                            <p className="flex items-center gap-2 break-all">
+                                <Mail className="h-4 w-4 text-purple-300" />
                                 zrevizijakavadarci@yahoo.com
-                            </div>
+                            </p>
                         </div>
 
-                        {/* Social Icons */}
-                        <div className="flex gap-4 justify-center md:justify-end pt-4">
-                            <a href="https://www.facebook.com/vizijakavadarci" target="_blank" className="w-10 h-10 bg-purple-700 hover:bg-purple-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg">
-                                <Facebook className="w-5 h-5" />
+                        <div className="mt-6 flex items-center gap-3">
+                            <a
+                                href="https://www.facebook.com/vizijakavadarci"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="Facebook"
+                                className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-600/70 bg-purple-800/60 transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-700"
+                            >
+                                <Facebook className="h-5 w-5" />
                             </a>
-                            <a href="https://www.instagram.com/zre.vizija/" target="_blank" className="w-10 h-10 bg-purple-700 hover:bg-purple-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg">
-                                <Instagram className="w-5 h-5" />
+                            <a
+                                href="https://www.instagram.com/zre.vizija/"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="Instagram"
+                                className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-600/70 bg-purple-800/60 transition-all duration-300 hover:-translate-y-0.5 hover:bg-purple-700"
+                            >
+                                <Instagram className="h-5 w-5" />
                             </a>
                         </div>
                     </div>
                 </div>
 
-                {/* Copyright */}
-                <div className="border-t border-purple-700/50 mt-12 pt-8 text-center text-purple-300 text-sm">
-                    © 2026 ЗРЕ Визија
+                <div className="mt-7 flex flex-col gap-3 border-t border-purple-700/60 pt-5 text-center text-xs text-purple-300 sm:flex-row sm:items-center sm:justify-between">
+                    <p>© 2026 ЗРЕ Визија. Сите права се задржани.</p>
+                    <p>Поддршка и доверливост за секоја жена.</p>
                 </div>
             </div>
         </footer>
