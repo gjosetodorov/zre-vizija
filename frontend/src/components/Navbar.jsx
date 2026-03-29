@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -16,41 +16,54 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-white backdrop-blur-sm shadow-lg border-b border-gray-100">
-            <div className="w-full mx-auto px-10 sm:px-15 lg:px-20">
-                <div className="flex justify-between items-center h-18 sm:h-24 md:h-30">
+        <nav className="border-b border-purple-200 bg-linear-to-r from-purple-50/90 via-white to-purple-100/80 shadow-sm backdrop-blur-md">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-24 items-center justify-between md:h-28">
 
                     {/* LOGO */}
-                    <Link to="/">
+                    <Link
+                        to="/"
+                        className="rounded-xl p-1 transition-transform duration-200"
+                    >
                         <img
                             src="/Logo_vizija_transparent.png"
                             alt="ZRE-Vizija"
-                            className="w-16 h-16 sm:h-22 sm:w-22 md:w-28 md:h-28"
+                            className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24"
                         />
                     </Link>
 
                     {/* DESKTOP NAV */}
-                    <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+                    <div className="hidden items-center rounded-full border border-purple-200 bg-white/90 p-1.5 shadow-sm lg:flex">
                         {links.map((link) => (
-                            <Link
+                            <NavLink
                                 key={link.to}
                                 to={link.to}
-                                className="text-gray-700 hover:text-gray-900 px-2 py-2 rounded-md text-sm xl:text-base font-medium transition-colors whitespace-nowrap"
+                                className={({ isActive }) =>
+                                    `rounded-full px-4 py-2.5 text-sm font-semibold transition-all xl:px-5 xl:text-base ${
+                                        isActive
+                                            ? "bg-purple-900 text-white shadow-md"
+                                            : "text-purple-900 hover:bg-purple-100 hover:text-purple-950"
+                                    }`
+                                }
                             >
                                 {link.label}
-                            </Link>
+                            </NavLink>
                         ))}
                     </div>
 
                     {/* MOBILE BUTTON */}
                     <button
-                        className="lg:hidden p-2 text-gray-700 hover:text-gray-900"
+                        type="button"
+                        className="rounded-xl border border-purple-200 bg-white p-2.5 text-purple-900 transition-colors hover:bg-purple-100 hover:text-purple-950 lg:hidden"
                         onClick={() => setMobileMenuIsOpen((prev) => !prev)}
+                        aria-expanded={mobileMenuIsOpen}
+                        aria-controls="mobile-menu"
+                        aria-label={mobileMenuIsOpen ? "Close menu" : "Open menu"}
                     >
                         {mobileMenuIsOpen ? (
-                            <X className="w-6 h-6 sm:w-8 sm:h-8" />
+                            <X className="h-7 w-7 sm:h-8 sm:w-8" />
                         ) : (
-                            <Menu className="w-6 h-6 sm:w-8 sm:h-8" />
+                            <Menu className="h-7 w-7 sm:h-8 sm:w-8" />
                         )}
                     </button>
                 </div>
@@ -58,20 +71,27 @@ export default function Navbar() {
 
             {/* MOBILE MENU */}
             <div
-                className={`lg:hidden overflow-hidden transition-all duration-300 ${
-                    mobileMenuIsOpen ? "max-h-125" : "max-h-0"
+                id="mobile-menu"
+                className={`overflow-hidden transition-all duration-300 lg:hidden ${
+                    mobileMenuIsOpen ? "max-h-96 py-2" : "max-h-0"
                 }`}
             >
-                <div className="bg-white border-t border-gray-100 px-6 py-4 space-y-2">
+                <div className="space-y-1 rounded-2xl border border-purple-200 bg-white p-3 shadow-sm">
                     {links.map((link) => (
-                        <Link
+                        <NavLink
                             key={link.to}
                             to={link.to}
                             onClick={() => setMobileMenuIsOpen(false)}
-                            className="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                            className={({ isActive }) =>
+                                `block rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
+                                    isActive
+                                        ? "bg-purple-900 text-white"
+                                        : "text-purple-900 hover:bg-purple-100 hover:text-purple-950"
+                                }`
+                            }
                         >
                             {link.label}
-                        </Link>
+                        </NavLink>
                     ))}
                 </div>
             </div>
