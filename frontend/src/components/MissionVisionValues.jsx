@@ -60,7 +60,7 @@ const MissionVisionValues = () => {
                         Нашата <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Мисија</span>
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
-                        Your 1-2 sentences here.
+                        Зајакнување на жените, унапредување на нивните права и превенција на родово базирано насилство, со цел создавање безбедно, праведно и еднакво општество.
                     </p>
                 </div>
             </motion.div>
@@ -80,7 +80,7 @@ const MissionVisionValues = () => {
                         Нашата <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Визија</span>
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
-                        Your 1-2 sentences here.
+                        Општество во кое жените се достоинствени, безбедни и еднакви, со целосна поддршка да ги остварат своите права и лидерска улога – јакнење, заштита, еднаквост.
                     </p>
                 </div>
             </motion.div>
@@ -100,7 +100,7 @@ const MissionVisionValues = () => {
                         Нашите <span className="text-xl font-bold text-purple-900 drop-shadow-xs tracking-tight">Вредности</span>
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
-                        Your 1-2 sentences here.
+                        Градење општество на правда, почит и безбедност, во кое жените се јакнат, се слуша нивниот глас и се штитат нивните права.
                     </p>
                 </div>
             </motion.div>

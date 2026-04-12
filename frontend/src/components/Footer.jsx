@@ -15,7 +15,8 @@ const Footer = () => {
                     <div className="space-y-4 sm:col-span-2 lg:col-span-1">
                         <h3 className="text-2xl font-extrabold tracking-wide">ЗРЕ Визија</h3>
                         <p className="text-sm leading-7 text-purple-200">
-                            Поддршка, заштита и охрабрување за секоја жена и секое семејство.
+                            Визија што обединува, еднаквост што ослободува.
+                            Рамноправност без компромис.
                         </p>
                         <div className="inline-flex items-center gap-2 rounded-full border border-purple-700/70 bg-purple-800/40 px-4 py-2 text-xs font-medium text-purple-100">
                             <MapPin className="h-4 w-4" />

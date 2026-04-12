@@ -33,7 +33,9 @@ export default function BannerCounselingCenter() {
 					</div>
 
 					<h1 className="mx-auto text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:max-w-3xl lg:text-7xl">
-						Советувалишен центар
+						<span className="block">Регионален</span>
+						<span className="block whitespace-nowrap">советувалишен центар</span>
+						<span className="block">Визија</span>
 					</h1>
 
 					<p className="mx-auto mt-5 max-w-2xl text-sm font-medium leading-relaxed text-white/95 sm:text-base md:text-lg">
@@ -42,7 +44,7 @@ export default function BannerCounselingCenter() {
 
 					<div className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-white">
 						<MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
-						<span className="text-sm font-semibold sm:text-base">Кавадарци, Северна Македонија</span>
+						<span className="text-sm font-semibold sm:text-base">7-ми Септември, Кавадарци</span>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,4 @@
 import Navbar from "../components/Navbar.jsx";
-import BannerCounselingCenter from "../components/BannerCounselingCenter.jsx";
-import CounselingForm from "../components/CounselingForm.jsx";
 import Footer from "../components/Footer.jsx";
 import BannerGallery from "../components/BannerGallery.jsx";
 import GalleryContainer from "../components/GalleryContainer.jsx";

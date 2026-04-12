@@ -88,7 +88,7 @@ export default function CounselingForm() {
 								onChange={handleChange}
 								required
 								placeholder="Вашето име и презиме"
-								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-500"
+								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-900"
 							/>
 						</label>
 
@@ -101,7 +101,7 @@ export default function CounselingForm() {
 								onChange={handleChange}
 								required
 								placeholder="Е-пошта или телефонски број"
-								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-500"
+								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-900"
 							/>
 						</label>
 
@@ -114,7 +114,7 @@ export default function CounselingForm() {
 								onChange={handleChange}
 								required
 								placeholder="Краток наслов"
-								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-500"
+								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-900"
 							/>
 						</label>
 
@@ -127,7 +127,7 @@ export default function CounselingForm() {
 								required
 								rows={6}
 								placeholder="Напишете ја вашата порака"
-								className="w-full resize-y rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-500"
+								className="w-full resize-y rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-900"
 							/>
 						</label>
 

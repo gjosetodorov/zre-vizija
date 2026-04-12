@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import aboutBannerImage from "../example_images/Untitled-2.jpg";
+import aboutBannerImage from "../images/banner_images/aboutus_banner.jpg";
 
 export default function BannerAboutUs() {
 	const [isVisible, setIsVisible] = useState(false);
+
+	const scrollToTeam = () => {
+		document.getElementById("team-members")?.scrollIntoView({ behavior: "smooth", block: "start" });
+	};
 
 	useEffect(() => {
 		const timer = setTimeout(() => setIsVisible(true), 80);
@@ -37,6 +41,14 @@ export default function BannerAboutUs() {
 					<p className="mx-auto mt-5 max-w-2xl text-sm font-medium leading-relaxed text-white/95 sm:text-base md:text-lg">
 						ЗРЕ Визија гради безбедна заедница каде жените се слушнати, поддржани и охрабрени.
 					</p>
+
+					<button
+						type="button"
+						onClick={scrollToTeam}
+						className="mt-7 inline-block min-w-52 cursor-pointer rounded-[999px] bg-purple-900 px-8 py-3 text-center text-base font-bold text-white shadow-md outline-none ring-purple-300 transition-all duration-300 hover:translate-x-2 hover:-translate-y-1 hover:bg-purple-800 hover:shadow-[0_16px_40px_rgba(76,29,149,0.35)] focus-visible:ring-4 active:scale-[0.98]"
+					>
+						Запознај го тимот
+					</button>
 
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { motion as Motion } from "framer-motion";
 import {
     BarChart,
     Bar,
@@ -16,12 +17,33 @@ function CustomTooltip({ active, payload, label }) {
     }
 
     return (
-        <div className="rounded-xl border border-purple-100 bg-white/95 px-3 py-2 shadow-lg">
+        <div className="rounded-lg border border-purple-200 bg-white px-4 py-3 shadow-lg">
             <p className="text-xs font-medium text-slate-500">Година: {label}</p>
-            <p className="text-sm font-semibold text-purple-900">{payload[0].value} пријавени случаи</p>
+            <p className="text-base font-bold text-purple-900">{payload[0].value} случаи</p>
         </div>
     );
 }
+
+const containerVariants = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.15
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut"
+        }
+    }
+};
 
 export default function DomesticViolenceStats() {
     const [data, setData] = useState([]);
@@ -63,45 +85,72 @@ export default function DomesticViolenceStats() {
     }, [data, sortBy]);
 
     return (
-        <section className="bg-linear-to-r from-purple-200 via-purple-100 to-blue-200 py-16">
-            <div className="max-w-6xl mx-auto px-4">
-
-                <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-stretch">
-
-                    {/* LEFT - TEXT */}
-                    <div className="h-full border-b border-purple-200 pb-8 md:border-r md:border-b-0 md:pr-10 md:pb-0">
-                        <h2 className="text-2xl font-bold text-purple-900 mb-4">
-                            Семејно насилство во Северна Македонија
+        <Motion.section
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20 px-4 sm:px-6 lg:px-8"
+        >
+            <div className="max-w-7xl mx-auto">
+                {/* Section Title */}
+                <Motion.div variants={itemVariants} className="mb-16">
+                    <div className="inline-block">
+                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
+                            Семејно насилство во<br /> Северна Македонија
                         </h2>
-
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            Семејното насилство останува сериозен општествен проблем во Северна
-                            Македонија, со стотици семејства погодени секоја година. Податоците
-                            покажуваат дека бројот на пријавени случаи не е изолиран инцидент,
-                            туку континуиран тренд што бара постојана институционална и
-                            заедничка реакција.
-                        </p>
-
-                        <p className="text-gray-700 leading-relaxed">
-                            Зад секој број стои реална приказна на жена, дете или семејство кое
-                            има потреба од заштита, правна помош и психолошка поддршка. Навременото
-                            пријавување, информираноста за правата и пристапот до советувалишта
-                            се клучни за прекин на циклусот на насилство.
-                        </p>
+                        <Motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true, amount: 0.7 }}
+                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+                            className="h-1 w-full origin-left rounded-full bg-linear-to-r from-purple-950 to-transparent"
+                        />
                     </div>
+                </Motion.div>
 
-                    {/* RIGHT - STATS */}
-                    <div className="w-full md:pl-10 h-full">
+                {/* Grid Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                    {/* LEFT - TEXT SECTION */}
+                    <Motion.div variants={itemVariants} className="flex flex-col justify-center space-y-6">
+                        <div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                Контекст и значајност
+                            </h3>
+                            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                                Семејното насилство останува сериозен общественнен проблем во Северна Македонија, со стотици семејства погодени секоја година. Податоците покажуваат дека бројот на пријавени случаи не е изолиран инцидент, туку континуиран тренд што бара постојана институционална и заедничка реакција.
+                            </p>
+                            <p className="text-lg text-gray-700 leading-relaxed">
+                                Зад секој број стои реална приказна на жена, дете или семејство кое има потреба од заштита, правна помош и психолошка поддршка. Навременото пријавување, информираноста за правата и пристапот до советувалишта се клучни за прекин на циклусот на насилство.
+                            </p>
+                        </div>
 
-                        {/* SORT */}
-                        <div className="mb-4 flex items-center justify-between gap-4">
-                            <h3 className="text-lg font-semibold text-gray-900">
-                                Статистика
+                        {/* Stats Highlights */}
+                        <div className="grid grid-cols-2 gap-4 pt-6">
+                            <div className="p-5 rounded-xl bg-purple-50 border border-purple-100">
+                                <p className="text-sm text-purple-600 font-semibold mb-2">Просечно годишно</p>
+                                <p className="text-3xl font-bold text-purple-900">1.065</p>
+                                <p className="text-xs text-gray-600 mt-1">пријавени случаи</p>
+                            </div>
+                            <div className="p-5 rounded-xl bg-blue-50 border border-blue-100">
+                                <p className="text-sm text-blue-600 font-semibold mb-2">Тренд од</p>
+                                <p className="text-3xl font-bold text-blue-900">2021</p>
+                                <p className="text-xs text-gray-600 mt-1">до 2025</p>
+                            </div>
+                        </div>
+                    </Motion.div>
+
+                    {/* RIGHT - CHART SECTION */}
+                    <Motion.div variants={itemVariants} className="flex flex-col">
+                        {/* Sort Controls */}
+                        <div className="mb-6 flex items-center justify-between">
+                            <h3 className="text-xl font-bold text-gray-900">
+                                Статистика по години
                             </h3>
 
-                            <div className="flex items-center gap-2">
-                                <label htmlFor="sort-domestic-violence" className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                    Сортирај
+                            <div className="flex items-center gap-3">
+                                <label htmlFor="sort-domestic-violence" className="text-xs font-semibold uppercase tracking-widest text-slate-600">
+                                    Сортирај:
                                 </label>
 
                                 <div className="relative">
@@ -109,13 +158,13 @@ export default function DomesticViolenceStats() {
                                         id="sort-domestic-violence"
                                         value={sortBy}
                                         onChange={(e) => setSortBy(e.target.value)}
-                                        className="min-w-36 appearance-none rounded-xl border border-transparent bg-white/90 py-2 pr-9 pl-3 text-sm font-medium text-slate-700 shadow-sm outline-none transition-all duration-200 hover:border-transparent hover:bg-white focus:border-transparent focus:ring-0"
+                                        className="appearance-none rounded-lg border border-gray-200 bg-white py-2 pr-8 pl-3 text-sm font-medium text-slate-700 shadow-sm outline-none transition-all duration-200 hover:border-purple-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-200"
                                     >
                                         <option value="year">По година</option>
                                         <option value="cases">По случаи</option>
                                     </select>
 
-                                    <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-purple-900">
+                                    <span className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
                                         <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.14l3.71-3.9a.75.75 0 011.08 1.04l-4.25 4.46a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                                         </svg>
@@ -124,63 +173,62 @@ export default function DomesticViolenceStats() {
                             </div>
                         </div>
 
-                        {/* HIGHLIGHT */}
+                        {/* Highlight Box */}
                         {latest && (
-                            <div className="mb-6 text-center">
-                                <div className="text-4xl font-bold text-purple-900">
-                                    {latest.cases}
+                            <div className="mb-8 p-6 rounded-xl bg-linear-to-br from-purple-50 to-purple-100/50 border border-purple-200">
+                                <p className="text-sm font-semibold text-purple-600 mb-2">Најнова година</p>
+                                <div className="flex items-baseline gap-3">
+                                    <span className="text-5xl font-black text-purple-900">{latest.cases}</span>
+                                    <span className="text-lg text-gray-700">пријавени случаи во {latest.year}</span>
                                 </div>
-                                <p className="text-sm text-gray-600">
-                                    случаи во {latest.year}
-                                </p>
                                 {latest.provisional && (
-                                    <p className="text-xs text-orange-500">
-                                        * привремени
+                                    <p className="text-xs text-orange-600 font-medium mt-3">
+                                        * Привремени податоци
                                     </p>
                                 )}
                             </div>
                         )}
 
-                        {/* CHART */}
-                        <div className="h-55 w-full rounded-2xl border border-purple-100 bg-white/80 p-3 shadow-sm backdrop-blur-sm sm:p-4">
-                            <ResponsiveContainer>
-                                <BarChart data={sortedData}>
+                        {/* Chart Container */}
+                        <div className="flex-1 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                            <ResponsiveContainer width="100%" height={320}>
+                                <BarChart data={sortedData} margin={{ top: 10, right: 10, left: -20, bottom: 10 }}>
                                     <defs>
                                         <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="0%" stopColor="#7c3aed" />
-                                            <stop offset="100%" stopColor="#4c1d95" />
+                                            <stop offset="100%" stopColor="#a855f7" />
                                         </linearGradient>
                                     </defs>
 
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#e9d5ff" vertical={false} />
+                                    <CartesianGrid strokeDasharray="4 4" stroke="#f0f0f0" vertical={false} />
                                     <XAxis
                                         dataKey="year"
                                         axisLine={false}
                                         tickLine={false}
-                                        tick={{ fill: "#475569", fontSize: 12 }}
+                                        tick={{ fill: "#6b7280", fontSize: 12, fontWeight: 500 }}
                                     />
                                     <YAxis
                                         axisLine={false}
                                         tickLine={false}
-                                        tick={{ fill: "#475569", fontSize: 12 }}
-                                        width={42}
+                                        tick={{ fill: "#6b7280", fontSize: 12 }}
+                                        width={40}
                                     />
-                                    <Tooltip cursor={{ fill: "rgba(124,58,237,0.07)" }} content={<CustomTooltip />} />
+                                    <Tooltip cursor={{ fill: "rgba(124, 58, 237, 0.1)" }} content={<CustomTooltip />} />
 
                                     <Bar
                                         dataKey="cases"
-                                        radius={[10, 10, 0, 0]}
+                                        radius={[8, 8, 0, 0]}
                                         fill="url(#barGradient)"
-                                        barSize={34}
+                                        barSize={44}
                                         isAnimationActive
-                                        animationDuration={700}
+                                        animationDuration={800}
                                     >
                                         {sortedData.map((entry, index) => (
                                             <Cell
                                                 key={`cell-${index}`}
                                                 fill={
                                                     entry.year === latest?.year
-                                                        ? "#4c1d95"
+                                                        ? "#7c3aed"
                                                         : "url(#barGradient)"
                                                 }
                                             />
@@ -190,15 +238,13 @@ export default function DomesticViolenceStats() {
                             </ResponsiveContainer>
                         </div>
 
-                        {/* SOURCE (CENTERED) */}
-                        <p className="text-sm text-gray-600 mt-4 text-center">
+                        {/* Source */}
+                        <p className="text-xs text-gray-500 mt-4 text-center">
                             Извор: Министерство за внатрешни работи / УНДП
                         </p>
-
-                    </div>
-
+                    </Motion.div>
                 </div>
             </div>
-        </section>
+        </Motion.section>
     );
 }

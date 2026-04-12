@@ -81,7 +81,7 @@ export default function GalleryContainer() {
 				/>
 			</div>
 
-			<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
+			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
 				{images.map((image) => (
 					<div
 						key={image.id}
@@ -90,7 +90,7 @@ export default function GalleryContainer() {
 						<img
 							src={image.src}
 							alt={`Gallery ${year} ${image.id}`}
-							className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+										className="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-110 sm:h-48 md:h-52"
 						/>
 					</div>
 				))}

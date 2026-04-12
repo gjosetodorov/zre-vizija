@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
-import exampleImage from "../example_images/profile.png";
+import biljana from "../images/team_members/biljana.jpg";
+import joana from "../images/team_members/joana.jpg";
+import anastasija from "../images/team_members/anastasija.jpg";
+import florida from "../images/team_members/florida.jpg";
+import marija from "../images/team_members/marija.jpg";
+import blagica from "../images/team_members/blagica.jpg";
 
 export default function TeamMembers() {
 	const teamMembers = [
-		{ id: 1, name: "Член 1", position: "Позиција", image: exampleImage },
-		{ id: 2, name: "Член 2", position: "Позиција", image: exampleImage },
-		{ id: 3, name: "Член 3", position: "Позиција", image: exampleImage },
-		{ id: 4, name: "Член 4", position: "Позиција", image: exampleImage },
-		{ id: 5, name: "Член 5", position: "Позиција", image: exampleImage },
-		{ id: 6, name: "Член 6", position: "Позиција", image: exampleImage },
+		{ id: 1, name: "Анастасија Танева", position: "Психотерапефт", image: anastasija },
+		{ id: 2, name: "Благица Коцева-Тодорова", position: "Претседателка", image: blagica },
+		{ id: 3, name: "Билјана Ташева", position: "Правна советничка", image: biljana },
+		{ id: 4, name: "Марија Камчева", position: "Лице за комуникација", image: marija },
+		{ id: 5, name: "Јоана Коцева", position: "Подпретседателка", image: joana },
+		{ id: 6, name: "Флорида Илиевска", position: "Социјален работник", image: florida },
 	];
 
 	const cardVariants = {
@@ -23,7 +28,7 @@ export default function TeamMembers() {
 	const MotionDiv = motion.div;
 
 	return (
-		<section className="bg-white px-4 py-10 sm:py-12 md:py-16">
+		<section id="team-members" className="bg-white px-4 py-10 sm:py-12 md:py-16">
 			<div className="mx-auto w-full max-w-450">
 				<h1 className="mb-8 px-4 text-center text-5xl font-extrabold tracking-wide text-purple-900 sm:text-6xl md:text-7xl">
 					Нашиот тим
