@@ -45,7 +45,7 @@ export default function BannerAboutUs() {
 					<button
 						type="button"
 						onClick={scrollToTeam}
-						className="mt-7 inline-block min-w-52 cursor-pointer rounded-[999px] bg-purple-900 px-8 py-3 text-center text-base font-bold text-white shadow-md outline-none ring-purple-300 transition-all duration-300 hover:translate-x-2 hover:-translate-y-1 hover:bg-purple-800 hover:shadow-[0_16px_40px_rgba(76,29,149,0.35)] focus-visible:ring-4 active:scale-[0.98]"
+						className="mt-7 inline-block min-w-52 cursor-pointer rounded-[999px] bg-linear-to-r from-white via-slate-100 to-white px-8 py-3 text-center text-base font-bold text-purple-900 shadow-md shadow-black/20 outline-none ring-white/70 transition-all duration-300 hover:translate-x-2 hover:-translate-y-1 hover:from-white hover:via-slate-50 hover:to-slate-100 hover:shadow-[0_16px_40px_rgba(15,23,42,0.25)] focus-visible:ring-4 active:scale-[0.98]"
 					>
 						Запознај го тимот
 					</button>
@@ -55,4 +55,3 @@ export default function BannerAboutUs() {
 		</section>
 	);
 }
-

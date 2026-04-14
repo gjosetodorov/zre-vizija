@@ -57,9 +57,9 @@ export default function CounselingForm() {
 	};
 
 	return (
-		<section className="bg-white px-4 py-14 sm:px-6 lg:px-10">
-			<div className="mx-auto grid w-full max-w-7xl gap-8 rounded-3xl border border-purple-100 bg-linear-to-r from-purple-50/60 via-white to-blue-50/70 p-6 shadow-sm md:grid-cols-2 md:gap-10 md:p-10">
-				<div className="rounded-2xl bg-white/70 p-6 md:p-8">
+		<section className="w-full bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 px-4 py-14 sm:px-6 lg:px-10">
+			<div className="mx-auto grid w-full max-w-7xl gap-8 rounded-3xl border border-purple-100 bg-white/70 p-6 shadow-sm lg:grid-cols-2 lg:gap-10 lg:p-10">
+				<div className="rounded-2xl bg-white/70 p-6 lg:p-8">
 					<p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-900">
 						Како функционира
 					</p>
@@ -71,13 +71,33 @@ export default function CounselingForm() {
 						зборови. Нашиот тим внимателно ја разгледува секоја порака и ве контактира преку
 						начинот што сте го навеле. Можете да споделите онолку колку што ви е удобно.
 					</p>
+					<ul className="mt-3 space-y-3 text-base leading-7 text-slate-700">
+						<li>
+							<strong>Име и презиме:</strong> ни помага да ви се обратиме лично и со почит.
+						</li>
+						<li>
+							<strong>Контакт (е-пошта или телефон):</strong> ова е начинот преку кој ќе ви
+							одговориме и ќе договориме понатамошна поддршка.
+						</li>
+						<li>
+							<strong>Наслов:</strong> краток опис на темата (на пример: правен совет,
+							емоционална поддршка, безбедносен план) за побрзо насочување.
+						</li>
+						<li>
+							<strong>Порака:</strong> тука слободно опишете што се случува, каква помош ви е
+							најпотребна и дали има итност. Колку детали ќе споделите е целосно ваша
+							одлука.
+						</li>
+					</ul>
 					<p className="mt-4 text-base leading-7 text-slate-700">
-						Овој чекор е само почеток. Не сте сами, а барањето совет е храбра и важна
-						одлука кон поддршка и сигурност.
+						По испраќањето, добивате потврда дека пораката е примена. Потоа нашиот тим ви
+						се јавува во најкус можен рок преку оставениот контакт. Овој чекор е само
+						почеток - не сте сами, а барањето совет е храбра и важна одлука кон поддршка и
+						сигурност.
 					</p>
 				</div>
 
-				<form onSubmit={handleSubmit} className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
+				<form onSubmit={handleSubmit} className="rounded-2xl bg-white p-6 shadow-sm lg:p-8">
 					<div className="grid gap-5">
 						<label className="grid gap-2">
 							<span className="text-sm font-semibold text-slate-800">Име и презиме</span>
@@ -155,4 +175,3 @@ export default function CounselingForm() {
 		</section>
 	);
 }
-

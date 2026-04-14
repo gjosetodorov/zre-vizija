@@ -5,6 +5,14 @@ import bannerImage from "../example_images/counseling-center-866x406.png";
 export default function BannerCounselingCenter() {
 	const [isVisible, setIsVisible] = useState(false);
 
+	const scrollToLocation = () => {
+		const locationSection = document.getElementById("counseling-center-location");
+		if (!locationSection) {
+			return;
+		}
+		locationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+	};
+
 	useEffect(() => {
 		const timer = setTimeout(() => setIsVisible(true), 80);
 		return () => clearTimeout(timer);
@@ -42,14 +50,16 @@ export default function BannerCounselingCenter() {
 						Простор каде секоја жена добива стручна поддршка и охрабрување.
 					</p>
 
-					<div className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-white">
+					<button
+						type="button"
+						onClick={scrollToLocation}
+						className="mx-auto mt-6 inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-white"
+					>
 						<MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
 						<span className="text-sm font-semibold sm:text-base">7-ми Септември, Кавадарци</span>
-					</div>
+					</button>
 				</div>
 			</div>
 		</section>
 	);
 }
-
-
