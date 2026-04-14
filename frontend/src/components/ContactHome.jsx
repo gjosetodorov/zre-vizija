@@ -1,5 +1,5 @@
-import { Phone, Mail, MapPin } from "lucide-react";
-import { motion as Motion } from "framer-motion";
+import {Phone, Mail, MapPin} from "lucide-react";
+import {motion as Motion} from "framer-motion";
 
 const containerVariants = {
     hidden: {},
@@ -11,7 +11,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: {opacity: 0, y: 30},
     show: {
         opacity: 1,
         y: 0,
@@ -28,21 +28,21 @@ const ContactHome = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{once: true, amount: 0.2}}
             className="bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20 px-4 sm:px-6 lg:px-8"
         >
             <div className="max-w-7xl mx-auto">
                 {/* Section Title */}
                 <Motion.div variants={itemVariants} className="mb-16">
                     <div className="inline-block">
-                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
+                        <h2 className="text-4xl sm:text-5xl font-black text-purple-900 mb-6">
                             Контактирајте не
                         </h2>
                         <Motion.div
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
-                            viewport={{ once: true, amount: 0.7 }}
-                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+                            initial={{scaleX: 0}}
+                            whileInView={{scaleX: 1}}
+                            viewport={{once: true, amount: 0.7}}
+                            transition={{duration: 0.7, ease: "easeOut", delay: 0.1}}
                             className="h-1 w-full origin-left rounded-full bg-linear-to-r from-purple-950 to-transparent"
                         />
                     </div>
@@ -61,7 +61,7 @@ const ContactHome = () => {
                                 {/* Location */}
                                 <div className="flex gap-4">
                                     <div className="shrink-0 mt-0.5">
-                                        <MapPin className="w-5 h-5 text-gray-900" />
+                                        <MapPin className="w-5 h-5 text-gray-900"/>
                                     </div>
                                     <div>
                                         <p className="text-gray-900 font-medium">Kavadarci, North Macedonia</p>
@@ -71,24 +71,20 @@ const ContactHome = () => {
                                 {/* Phone */}
                                 <div className="flex gap-4">
                                     <div className="shrink-0 mt-0.5">
-                                        <Phone className="w-5 h-5 text-gray-900" />
+                                        <Phone className="w-5 h-5 text-gray-900"/>
                                     </div>
-                                    <div>
-                                        <a href="tel:+38975480288" className="text-gray-900 font-medium">
-                                            +389 75 480 288
-                                        </a>
+                                    <div className="text-gray-900 font-medium">
+                                        +389 75 480 288
                                     </div>
                                 </div>
 
                                 {/* Email */}
                                 <div className="flex gap-4">
                                     <div className="shrink-0 mt-0.5">
-                                        <Mail className="w-5 h-5 text-gray-900" />
+                                        <Mail className="w-5 h-5 text-gray-900"/>
                                     </div>
-                                    <div>
-                                        <a href="mailto:zrevizijakavadarci@yahoo.com" className="text-gray-900 font-medium">
-                                            zrevizijakavadarci@yahoo.com
-                                        </a>
+                                    <div className="text-gray-900 font-medium">
+                                        zrevizijakavadarci@yahoo.com
                                     </div>
                                 </div>
                             </div>
@@ -107,24 +103,20 @@ const ContactHome = () => {
                                 {/* Phone */}
                                 <div className="flex gap-4">
                                     <div className="shrink-0 mt-0.5">
-                                        <Phone className="w-5 h-5 text-gray-900" />
+                                        <Phone className="w-5 h-5 text-gray-900"/>
                                     </div>
-                                    <div>
-                                        <a href="tel:+38970394203" className="text-gray-900 font-medium">
-                                            +389 70 394 203
-                                        </a>
+                                    <div className="text-gray-900 font-medium">
+                                        +389 70 394 203
                                     </div>
                                 </div>
 
                                 {/* Email */}
                                 <div className="flex gap-4">
                                     <div className="shrink-0 mt-0.5">
-                                        <Mail className="w-5 h-5 text-gray-900" />
+                                        <Mail className="w-5 h-5 text-gray-900"/>
                                     </div>
-                                    <div>
-                                        <a href="mailto:bkoceva@yahoo.com" className="text-gray-900 font-medium">
-                                            bkoceva@yahoo.com
-                                        </a>
+                                    <div className="text-gray-900 font-medium">
+                                        bkoceva@yahoo.com
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +132,7 @@ const ContactHome = () => {
                             <div className="w-full h-96">
                                 <iframe
                                     title="Google Map - ЗРЕ Визија Советувалишен Центар"
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d230.73215966699132!2d22.0148248876914!3d41.434759351275865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2smk!4v1773666944122!5m2!1sen!2smk"
+                                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d902.6252702923214!2d22.01820893264576!3d41.43554637873136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDI2JzA4LjAiTiAyMsKwMDEnMDUuNiJF!5e1!3m2!1sen!2smk!4v1776204405049!5m2!1sen!2smk"
                                     className="w-full h-full border-0"
                                     loading="lazy"
                                     allowFullScreen=""
@@ -160,7 +152,7 @@ const ContactHome = () => {
                             <div className="w-full h-96">
                                 <iframe
                                     title="Google Map - ЗРЕ Визија Советувалишен Центар 2"
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d230.73215966699132!2d22.0148248876914!3d41.434759351275865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2smk!4v1773666944122!5m2!1sen!2smk"
+                                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d759.0312423191475!2d22.018601750058703!3d41.4341021410061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDI2JzAyLjUiTiAyMsKwMDEnMDcuMCJF!5e1!3m2!1sen!2smk!4v1776204245047!5m2!1sen!2smk"
                                     className="w-full h-full border-0"
                                     loading="lazy"
                                     allowFullScreen=""
@@ -168,9 +160,9 @@ const ContactHome = () => {
                                 />
                             </div>
                             <div className="p-5 bg-white text-center border-t border-purple-100">
-                                <p className="text-xs font-semibold text-gray-600 mb-1">СОВЕТУВАЛИШЕН ЦЕНТАР 2</p>
+                                <p className="text-xs font-semibold text-gray-600 mb-1">СОВЕТУВАЛИШЕН ЦЕНТАР</p>
                                 <p className="text-sm text-gray-900 font-medium">
-                                    Бул. "Марко Џумев" бр. 2, Кавадарци
+                                    7-ми Септември, Кавадарци
                                 </p>
                             </div>
                         </div>

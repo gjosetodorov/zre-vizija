@@ -20,7 +20,7 @@ const Footer = () => {
                         </p>
                         <div className="inline-flex items-center gap-2 rounded-full border border-purple-700/70 bg-purple-800/40 px-4 py-2 text-xs font-medium text-purple-100">
                             <MapPin className="h-4 w-4" />
-                            Кавадарци, Северна Македонија
+                            7-ми Септемрви, Кавадарци
                         </div>
                     </div>
 

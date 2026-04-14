@@ -8,7 +8,7 @@ import blagica from "../images/team_members/blagica.jpg";
 
 export default function TeamMembers() {
 	const teamMembers = [
-		{ id: 1, name: "Анастасија Танева", position: "Психотерапефт", image: anastasija },
+		{ id: 1, name: "Анастасија Танева", position: "Психотерапевт", image: anastasija },
 		{ id: 2, name: "Благица Коцева-Тодорова", position: "Претседателка", image: blagica },
 		{ id: 3, name: "Билјана Ташева", position: "Правна советничка", image: biljana },
 		{ id: 4, name: "Марија Камчева", position: "Лице за комуникација", image: marija },

@@ -4,14 +4,12 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import publication_1 from "../publications/analiza-VIZIJA-final.pdf";
 import publication_2 from "../publications/Наративен извештај за работа на Визија.pdf";
-import primerPdf from "../publications/primer.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const publications = [
 	{ id: 1, file: publication_1 },
 	{ id: 2, file: publication_2 },
-	{ id: 3, file: primerPdf },
 ];
 
 export default function PublicationsContainer() {

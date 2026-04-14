@@ -120,7 +120,7 @@ export default function CounselingForm() {
 								value={formData.contactInfo}
 								onChange={handleChange}
 								required
-								placeholder="Е-пошта или телефонски број"
+								placeholder="Е-пошта или телефон"
 								className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition-colors focus:border-purple-900"
 							/>
 						</label>

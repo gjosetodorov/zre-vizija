@@ -96,7 +96,7 @@ export default function DomesticViolenceStats() {
                 {/* Section Title */}
                 <Motion.div variants={itemVariants} className="mb-16">
                     <div className="inline-block">
-                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
+                        <h2 className="text-4xl sm:text-5xl font-black text-purple-900 mb-6">
                             Семејно насилство во<br /> Северна Македонија
                         </h2>
                         <Motion.div
@@ -158,7 +158,7 @@ export default function DomesticViolenceStats() {
                                         id="sort-domestic-violence"
                                         value={sortBy}
                                         onChange={(e) => setSortBy(e.target.value)}
-                                        className="appearance-none rounded-lg border border-gray-200 bg-white py-2 pr-8 pl-3 text-sm font-medium text-slate-700 shadow-sm outline-none transition-all duration-200 hover:border-purple-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-200"
+                                        className="appearance-none rounded-lg border border-gray-200 bg-white py-2 pr-8 pl-3 text-sm font-medium text-slate-700 shadow-sm outline-none transition-all duration-200"
                                     >
                                         <option value="year">По година</option>
                                         <option value="cases">По случаи</option>
