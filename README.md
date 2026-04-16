@@ -1,16 +1,48 @@
-# React + Vite
+# ZRE Vizija
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ZRE Vizija is a web platform for the Regional Non-governmental Organization "Vizija", focused on supporting women through information, counseling access, and community visibility.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The website is designed to:
+- provide clear information about services and support,
+- make contacting the counseling center simple and safe,
+- present public initiatives, publications, and donor contributions.
 
-## React Compiler
+## What the Platform Includes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Home**: key messages, impact-focused sections, and calls to action.
+- **About Us**: mission, values, organization story, projects, and team presentation.
+- **Counseling Center**: service information, location details, and counseling request form.
+- **Donations**: ways to support and donor-focused information.
+- **Gallery**: yearly photo collections that can be expanded over time.
+- **Publications**: PDF-based materials previewed as covers with direct open/read actions.
+- **Contact**: contact details, map/location context, social links.
 
-## Expanding the ESLint configuration
+## Contact Form and Email Flow
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The frontend form sends user submissions to the backend endpoint, which validates input and forwards the message via email.
+
+Submitted fields:
+- `name`
+- `subject`
+- `contactInfo` (email or phone)
+- `message`
+
+This enables the team to receive requests in one inbox and respond quickly.
+
+## Tech Overview
+
+- **Frontend**: React + Vite
+- **Backend**: Node.js + Express
+- **Email Service**: Nodemailer (SMTP via environment variables)
+- **Styling**: responsive, component-based UI with a purple-themed design system
+
+## Repository Structure
+
+- `frontend/` - UI components, pages, assets, and client logic
+- `backend/` - API routes and email sending logic
+
+## Content Maintenance
+
+The project is built so images, banners, gallery entries, publications, and text sections can be updated incrementally without changing the overall structure.
