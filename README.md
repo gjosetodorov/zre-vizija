@@ -28,8 +28,11 @@ Submitted fields:
 - `subject`
 - `contactInfo` (email or phone)
 - `message`
+- `recaptchaToken`
 
 This enables the team to receive requests in one inbox and respond quickly.
+
+The contact form uses a Google reCAPTCHA widget in the frontend. Set `VITE_RECAPTCHA_SITE_KEY` in the frontend environment to override the built-in public site key when needed, and keep `RECAPTCHA_SECRET_KEY` configured on the backend.
 
 ## Tech Overview
 

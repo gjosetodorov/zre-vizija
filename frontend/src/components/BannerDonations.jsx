@@ -22,13 +22,6 @@ export default function BannerDonations() {
 						isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
 					}`}
 				>
-					<div className="mx-auto mb-4 inline-flex items-center gap-3">
-						<span className="h-px w-10 bg-white/70" />
-						<p className="text-xs font-semibold uppercase tracking-[0.22em] text-purple-100 sm:text-sm">
-							Поддршка - Солидарност - Промена
-						</p>
-						<span className="h-px w-10 bg-white/70" />
-					</div>
 
 					<h1 className="mx-auto text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:max-w-3xl lg:text-7xl">
 						Донации

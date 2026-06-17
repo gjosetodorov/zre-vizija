@@ -4,11 +4,12 @@ const dotenv = require("dotenv");
 const nodemailer = require("nodemailer");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const https = require("https"); // ← NEW: built-in, no install needed
 
 dotenv.config();
 
 // Validate required environment variables on startup
-const requiredEnvVars = ["EMAIL_USER", "EMAIL_PASS"];
+const requiredEnvVars = ["EMAIL_USER", "EMAIL_PASS", "RECAPTCHA_SECRET_KEY"]; // ← RECAPTCHA_SECRET_KEY added
 for (const envVar of requiredEnvVars) {
 	if (!process.env[envVar]) {
 		console.error(`❌ Missing required environment variable: ${envVar}`);
@@ -21,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
-const API_KEY = process.env.API_KEY || "dev-key-change-in-production";
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // ← NEW
 
 // Nodemailer transporter with timeout
 const transporter = nodemailer.createTransport({
@@ -52,7 +53,7 @@ app.use(express.json({ limit: "1mb" }));
 const emailRateLimiter = rateLimit({
 	windowMs: 15 * 60 * 1000,
 	max: 5,
-	message: "Too many emails sent from this IP, please try again later.",
+	message: "Премногу обиди за испраќање. Следната порака можете да ја испратете подоцна.",
 	standardHeaders: true,
 	legacyHeaders: false,
 });
@@ -74,17 +75,27 @@ app.get("/api", (req, res) => {
 	res.status(200).json({ message: "API is ready." });
 });
 
-// Middleware: API key authentication
-const requireApiKey = (req, res, next) => {
-	const providedKey = req.headers["x-api-key"];
-	if (!providedKey || providedKey !== API_KEY) {
-		return res.status(401).json({ success: false, error: "Unauthorized" });
-	}
-	next()
-};
+app.post("/send-email", emailRateLimiter, async (req, res) => {
+	const { name, subject, contactInfo, contact, message, recaptchaToken } = req.body; // ← recaptchaToken added
 
-app.post("/send-email", emailRateLimiter, requireApiKey, async (req, res) => {
-	const { name, subject, contactInfo, contact, message } = req.body;
+	// ── NEW: reCAPTCHA verification (runs before any other validation) ──────────
+	if (!recaptchaToken || typeof recaptchaToken !== "string") {
+		return res.status(400).json({
+			success: false,
+			error: "Недостасува reCAPTCHA токен.",
+		});
+	}
+
+	const captchaResult = await verifyRecaptcha(recaptchaToken);
+	if (!captchaResult.success) {
+		console.warn("⚠️ reCAPTCHA verification failed:", captchaResult["error-codes"]);
+		return res.status(400).json({
+			success: false,
+			error: "reCAPTCHA верификацијата не успеа. Обидете се повторно.",
+		});
+	}
+	// ────────────────────────────────────────────────────────────────────────────
+
 	const normalizedContactInfo = contactInfo || contact;
 
 	// Input validation with length limits
@@ -164,8 +175,7 @@ app.use((err, req, res, _next) => {
 const server = app.listen(PORT, () => {
 	console.log(`🚀 Backend running on http://localhost:${PORT}`);
 	console.log(`📧 Email: ${EMAIL_USER}`);
-	console.log(`🔐 API key protection: enabled`);
-	console.log(`⏱️  Rate limit: 5 requests per 15 minutes per IP`);
+	console.log(`⏱️ Rate limit: 5 requests per 15 minutes per IP`);
 });
 
 process.on("SIGTERM", () => {
@@ -188,3 +198,36 @@ function escapeHtml(text) {
 	return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
+// ── NEW: Verify a reCAPTCHA token against Google's API ──────────────────────
+// Uses the built-in https module — no extra dependencies required.
+function verifyRecaptcha(token) {
+	return new Promise((resolve, reject) => {
+		const postData = `secret=${encodeURIComponent(RECAPTCHA_SECRET_KEY)}&response=${encodeURIComponent(token)}`;
+
+		const options = {
+			hostname: "www.google.com",
+			path: "/recaptcha/api/siteverify",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded",
+				"Content-Length": Buffer.byteLength(postData),
+			},
+		};
+
+		const req = https.request(options, (res) => {
+			let data = "";
+			res.on("data", (chunk) => { data += chunk; });
+			res.on("end", () => {
+				try {
+					resolve(JSON.parse(data));
+				} catch {
+					reject(new Error("Invalid JSON from reCAPTCHA API"));
+				}
+			});
+		});
+
+		req.on("error", reject);
+		req.write(postData);
+		req.end();
+	});
+}
