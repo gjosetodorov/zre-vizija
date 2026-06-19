@@ -33,7 +33,7 @@ export default function BannerCounselingCenter() {
 					}`}
 				>
 
-					<h1 className="mx-auto text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:max-w-3xl lg:text-7xl">
+					<h1 className="mx-auto text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:max-w-3xl lg:text-7xl">
 						<span className="block">Регионален</span>
 						<span className="block whitespace-nowrap">советувалишен центар</span>
 						<span className="block">Визија</span>

@@ -19,7 +19,7 @@ for (const envVar of requiredEnvVars) {
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
+const CORS_ORIGIN = process.env.CORS_ORIGIN;
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // ← NEW

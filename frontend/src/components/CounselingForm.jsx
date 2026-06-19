@@ -80,7 +80,7 @@ export default function CounselingForm() {
 	const sendForm = useCallback(async (recaptchaToken) => {
 		setSubmitError("");
 
-		const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+		const apiBaseUrl = import.meta.env.VITE_API_URL || "https://zre-vizija-production.up.railway.app";
 
 		try {
 			const response = await fetch(`${apiBaseUrl}/send-email`, {
