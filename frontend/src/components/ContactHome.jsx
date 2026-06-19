@@ -140,9 +140,9 @@ const ContactHome = () => {
                                 />
                             </div>
                             <div className="p-5 bg-white text-center border-t border-purple-100">
-                                <p className="text-xs font-semibold text-gray-600 mb-1">СОВЕТУВАЛИШЕН ЦЕНТАР 1</p>
+                                <p className="text-xs font-semibold text-gray-600 mb-1">НВО ЗРЕ ВИЗИЈА</p>
                                 <p className="text-sm text-gray-900 font-medium">
-                                    Бул. "Марко Џумев" бр. 2, Кавадарци
+                                    Сремски Фронт, Кавадарци
                                 </p>
                             </div>
                         </div>
