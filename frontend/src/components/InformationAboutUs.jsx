@@ -16,7 +16,10 @@ const revealUp = {
 };
 
 const revealLeft = {
-    hidden: { opacity: 0, x: -60 },
+    hidden: {
+        opacity: 0,
+        x: -30
+    },
     show: {
         opacity: 1,
         x: 0,
@@ -28,7 +31,10 @@ const revealLeft = {
 };
 
 const revealRight = {
-    hidden: { opacity: 0, x: 60 },
+    hidden: {
+        opacity: 0,
+        x: 30
+    },
     show: {
         opacity: 1,
         x: 0,
@@ -98,8 +104,9 @@ const projects = [
 
 export default function InformationAboutUs() {
     return (
-        <Motion.section className="w-full bg-linear-to-b from-white via-purple-50/60 to-white px-4 py-20 sm:px-6 lg:px-8">
+        <Motion.section className="w-full overflow-x-hidden bg-linear-to-b from-white via-purple-50/60 to-white px-4 py-20 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl space-y-20">
+
                 <Motion.div
                     variants={revealUp}
                     initial="hidden"
@@ -124,6 +131,7 @@ export default function InformationAboutUs() {
                             <Sparkles className="h-5 w-5" />
                             <span className="text-sm font-semibold">Нашата мотивација</span>
                         </div>
+
                         <p className="text-lg leading-9 text-gray-700 sm:text-xl">
                             Кога сме толку силни и јаките, зошто да не кажеме колку сработиле жените од ОЖ "Визија" Кавадарци.
                             Со својата посветеност, тие придонесуваат кон создавање на општество во кое жената е позаштитена,
@@ -153,37 +161,40 @@ export default function InformationAboutUs() {
                         viewport={{ once: true, amount: 0.25 }}
                         className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_1.4fr] lg:items-center lg:px-8"
                     >
-                    <Motion.div variants={revealLeft} className="space-y-6">
-                        <div className="flex items-center gap-3 text-purple-900">
-                            <BookOpen className="h-6 w-6" />
-                            <h3 className="text-3xl font-bold sm:text-4xl">Нашиот пат</h3>
-                        </div>
-                        <p className="text-lg leading-8 text-gray-700">
-                            Низ повеќе од три децении, организацијата се развива заедно со потребите на жените и заедницата,
-                            создавајќи простор за поддршка, едукација и безбедност.
-                        </p>
+                        <Motion.div variants={revealLeft} className="space-y-6">
+                            <div className="flex items-center gap-3 text-purple-900">
+                                <BookOpen className="h-6 w-6" />
+                                <h3 className="text-3xl font-bold sm:text-4xl">Нашиот пат</h3>
+                            </div>
 
-                        <div className="h-64 overflow-hidden rounded-3xl">
-                            <img
-                                src={secondAboutImage}
-                                alt="Фотографија од активности на Визија"
-                                className="block h-full w-full object-cover object-center"
-                            />
-                        </div>
+                            <p className="text-lg leading-8 text-gray-700">
+                                Низ повеќе од три децении, организацијата се развива заедно со потребите на жените и заедницата,
+                                создавајќи простор за поддршка, едукација и безбедност.
+                            </p>
 
-                    </Motion.div>
+                            <div className="h-64 overflow-hidden rounded-3xl">
+                                <img
+                                    src={secondAboutImage}
+                                    alt="Фотографија од активности на Визија"
+                                    className="block h-full w-full object-cover object-center"
+                                />
+                            </div>
+                        </Motion.div>
 
-                    <Motion.ul variants={revealRight} className="list-disc space-y-5 pl-6 marker:text-purple-800">
-                        {timelineItems.map((item, index) => (
-                            <Motion.li
-                                key={index}
-                                variants={index % 2 === 0 ? revealRight : revealLeft}
-                                className="text-lg leading-8 text-gray-700"
-                            >
-                                {item}
-                            </Motion.li>
-                        ))}
-                    </Motion.ul>
+                        <Motion.ul
+                            variants={revealRight}
+                            className="list-disc space-y-5 pl-6 marker:text-purple-800"
+                        >
+                            {timelineItems.map((item, index) => (
+                                <Motion.li
+                                    key={index}
+                                    variants={index % 2 === 0 ? revealRight : revealLeft}
+                                    className="text-lg leading-8 text-gray-700"
+                                >
+                                    {item}
+                                </Motion.li>
+                            ))}
+                        </Motion.ul>
                     </Motion.div>
                 </section>
 
@@ -196,7 +207,9 @@ export default function InformationAboutUs() {
                 >
                     <div className="flex items-center gap-3 text-purple-900">
                         <Users className="h-6 w-6" />
-                        <h3 className="text-3xl font-bold sm:text-4xl">Клучни активности и успеси</h3>
+                        <h3 className="text-3xl font-bold sm:text-4xl">
+                            Клучни активности и успеси
+                        </h3>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -206,7 +219,7 @@ export default function InformationAboutUs() {
                                 variants={index % 2 === 0 ? revealLeft : revealRight}
                                 whileHover={{ y: -6 }}
                                 transition={{ duration: 0.2, ease: "easeOut" }}
-                                className="rounded-2xl border border-purple-100 bg-linear-to-br from-white to-purple-50 p-6 shadow-sm transition-all duration-200 ease-out hover:shadow-md"
+                                className="rounded-2xl border border-purple-100 bg-linear-to-br from-white to-purple-50 p-6 shadow-sm hover:shadow-md"
                             >
                                 <p className="text-base leading-8 text-gray-700">{item}</p>
                             </Motion.div>
@@ -222,37 +235,53 @@ export default function InformationAboutUs() {
                         viewport={{ once: true, amount: 0.2 }}
                         className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8"
                     >
-                    <div className="flex items-center gap-3 text-purple-900">
-                        <HeartHandshake className="h-6 w-6" />
-                        <h3 className="text-3xl font-bold sm:text-4xl">Реализирани проекти</h3>
-                    </div>
+                        <div className="flex items-center gap-3 text-purple-900">
+                            <HeartHandshake className="h-6 w-6" />
+                            <h3 className="text-3xl font-bold sm:text-4xl">
+                                Реализирани проекти
+                            </h3>
+                        </div>
 
-                    <div className="space-y-4">
-                        {projects.map((project, index) => (
-                            <Motion.article
-                                key={index}
-                                variants={index % 2 === 0 ? revealUp : revealRight}
-                                whileHover={{ y: -4 }}
-                                transition={{ duration: 0.2, ease: "easeOut" }}
-                                className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm transition-all duration-200 ease-out hover:shadow-md"
-                            >
-                                <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1fr] sm:gap-6">
-                                    <div>
-                                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">Проект</p>
-                                        <h4 className="mt-1 text-lg font-bold text-purple-900">{project.title}</h4>
+                        <div className="space-y-4">
+                            {projects.map((project, index) => (
+                                <Motion.article
+                                    key={index}
+                                    variants={index % 2 === 0 ? revealUp : revealRight}
+                                    whileHover={{ y: -4 }}
+                                    transition={{ duration: 0.2, ease: "easeOut" }}
+                                    className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm hover:shadow-md"
+                                >
+                                    <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1fr] sm:gap-6">
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">
+                                                Проект
+                                            </p>
+                                            <h4 className="mt-1 text-lg font-bold text-purple-900">
+                                                {project.title}
+                                            </h4>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">
+                                                Наслов
+                                            </p>
+                                            <p className="mt-1 text-gray-700">
+                                                {project.desc}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">
+                                                Донатор
+                                            </p>
+                                            <p className="mt-1 font-semibold text-gray-700">
+                                                {project.donor}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">Наслов</p>
-                                        <p className="mt-1 text-gray-700">{project.desc}</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-purple-600">Донатор</p>
-                                        <p className="mt-1 text-gray-700 font-semibold">{project.donor}</p>
-                                    </div>
-                                </div>
-                            </Motion.article>
-                        ))}
-                    </div>
+                                </Motion.article>
+                            ))}
+                        </div>
                     </Motion.div>
                 </section>
 
