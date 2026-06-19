@@ -27,8 +27,8 @@ const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // ← NEW
 // Nodemailer transporter with timeout
 const transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",
-	port: 465,
-	secure: true,
+	port: 587,
+	secure: false,
 	auth: {
 		user: EMAIL_USER,
 		pass: EMAIL_PASS,
