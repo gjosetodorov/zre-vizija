@@ -25,11 +25,13 @@ const EMAIL_PASS = process.env.EMAIL_PASS;
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // ← NEW
 
 // Nodemailer transporter with timeout
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+
 const transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",
 	port: 587,
 	secure: false,
-	family: 4,
 	auth: {
 		user: EMAIL_USER,
 		pass: EMAIL_PASS,
