@@ -26,6 +26,14 @@ const { Resend } = require("resend");
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Security: helmet, request limits, rate limiting
+app.use(
+	cors({
+		origin: CORS_ORIGIN,
+		methods: ["GET", "POST"],
+		credentials: false,
+	})
+);
+
 app.use(helmet());
 app.use(express.json({ limit: "1mb" }));
 
@@ -36,14 +44,6 @@ const emailRateLimiter = rateLimit({
 	standardHeaders: true,
 	legacyHeaders: false,
 });
-
-app.use(
-	cors({
-		origin: CORS_ORIGIN,
-		methods: ["GET", "POST"],
-		credentials: false,
-	})
-);
 
 app.get("/health", (req, res) => {
 	res.status(200).json({ ok: true, service: "zre-vizija-backend" });
