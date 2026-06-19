@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const nodemailer = require("nodemailer");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const https = require("https"); // ← NEW: built-in, no install needed
@@ -9,7 +8,7 @@ const https = require("https"); // ← NEW: built-in, no install needed
 dotenv.config();
 
 // Validate required environment variables on startup
-const requiredEnvVars = ["EMAIL_USER", "EMAIL_PASS", "RECAPTCHA_SECRET_KEY"]; // ← RECAPTCHA_SECRET_KEY added
+const requiredEnvVars = ["EMAIL_USER", "RESEND_API_KEY", "RECAPTCHA_SECRET_KEY"];
 for (const envVar of requiredEnvVars) {
 	if (!process.env[envVar]) {
 		console.error(`❌ Missing required environment variable: ${envVar}`);
@@ -21,33 +20,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN;
 const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // ← NEW
 
-// Nodemailer transporter with timeout
-const dns = require("dns");
-dns.setDefaultResultOrder("ipv4first");
-
-const transporter = nodemailer.createTransport({
-	host: "smtp.gmail.com",
-	port: 587,
-	secure: false,
-	auth: {
-		user: EMAIL_USER,
-		pass: EMAIL_PASS,
-	},
-	connectionTimeout: 5000,
-	socketTimeout: 5000,
-});
-
-// Verify transporter on startup
-transporter.verify((error, _success) => {
-	if (error) {
-		console.error("❌ Email transporter verification failed:", error.message);
-	} else {
-		console.log("✅ Email transporter verified successfully");
-	}
-});
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Security: helmet, request limits, rate limiting
 app.use(helmet());
@@ -143,15 +119,19 @@ app.post("/send-email", emailRateLimiter, async (req, res) => {
 	`;
 
 	try {
-		const info = await transporter.sendMail({
-			from: EMAIL_USER,
+		const { data, error } = await resend.emails.send({
+			from: "onboarding@resend.dev", // free Resend sender, no domain needed
 			to: EMAIL_USER,
 			subject: mailSubject,
-			text: textBody,
 			html: htmlBody,
+			text: textBody,
 		});
 
-		console.log(`✅ Email sent [ID: ${info.messageId}] from ${name}`);
+		if (error) {
+			throw new Error(error.message);
+		}
+
+		console.log(`✅ Email sent [ID: ${data.id}] from ${name}`);
 		return res.status(200).json({
 			success: true,
 			message: "Email sent successfully.",

@@ -87,7 +87,6 @@ export default function CounselingForm() {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					"X-API-Key": "dev-key-change-in-production",
 				},
 				body: JSON.stringify({
 					...formDataRef.current,
