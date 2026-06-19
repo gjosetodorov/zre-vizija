@@ -1,33 +1,38 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import legalConsultation from "../images/card_images/legal_consultation.jpg";
+import therapy from "../images/card_images/therapy.jpg";
+import safety from "../images/card_images/safety.jpg";
+import crisis from "../images/card_images/crisis.jpg";
+
 const adviceCards = [
 	{
 		id: 1,
 		title: "Правна насока",
 		text: "Добијте практична правна насока и разберете ги своите права во јасни, едноставни чекори.",
-		image: "/src/images/card_images/legal_consultation.jpg",
+		image: legalConsultation,
 		alt: "Консултација за правна насока",
 	},
 	{
 		id: 2,
 		title: "Емоционална поддршка",
 		text: "Разговарајте со обучен стручњак во безбедна и поддржувачка средина.",
-		image: "/src/images/card_images/therapy.jpg",
+		image: therapy,
 		alt: "Состанок за емоционална поддршка",
 	},
 	{
 		id: 3,
 		title: "Планирање на безбедност",
 		text: "Изградете персонализиран план насочен кон непосредна безбедност и долгорочна стабилност.",
-		image: "/src/images/card_images/safety.jpg",
+		image: safety,
 		alt: "Белешки за планирање на безбедност",
 	},
 	{
 		id: 4,
 		title: "Кризна интервенција",
 		text: "Добијте итна насока за спешни ситуации и брзо поврзување со соодветна поддршка.",
-		image: "/src/images/card_images/crisis.jpg",
+		image: crisis,
 		alt: "Поддршка при кризна интервенција",
 	},
 ];

@@ -145,7 +145,7 @@ export default function InformationAboutUs() {
                     </Motion.div>
                 </Motion.div>
 
-                <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
+                <section className="w-full rounded-3xl bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
                     <Motion.div
                         variants={staggerContainer}
                         initial="hidden"
@@ -214,7 +214,7 @@ export default function InformationAboutUs() {
                     </div>
                 </Motion.div>
 
-                <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
+                <section className="w-full rounded-3xl bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
                     <Motion.div
                         variants={staggerContainer}
                         initial="hidden"
