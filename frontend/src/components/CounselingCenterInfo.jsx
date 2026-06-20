@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion as Motion } from "framer-motion";
-import { Shield, Users, Scale, Briefcase, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { Shield, Users, Scale, Briefcase, ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const counselingCenterImages = Object.entries(
     import.meta.glob("../images/counseling_center/*.{jpg,jpeg,png,webp}", {
@@ -266,22 +266,22 @@ export default function CounselingCenterInfo() {
                     </section>
 
                     <section>
-                         <div className="relative">
-                             <div
-                                 ref={sliderRef}
-                                 onScroll={(event) => {
-                                     const atStart = event.currentTarget.scrollLeft <= 6;
-                                     isAtStartRef.current = atStart;
-                                     setIsAtStart(atStart);
-                                 }}
-                                 onPointerDown={handleSliderPointerDown}
-                                 onPointerMove={handleSliderPointerMove}
-                                 onPointerUp={handleSliderPointerUp}
-                                 onPointerCancel={handleSliderPointerUp}
-                                 onPointerLeave={handleSliderPointerUp}
-                                 onLostPointerCapture={handleSliderPointerUp}
-                                 className="flex snap-x snap-proximity gap-4 overflow-x-auto px-2 py-1 scroll-smooth scroll-px-2 touch-pan-x select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                             >
+                        <div className="relative">
+                            <div
+                                ref={sliderRef}
+                                onScroll={(event) => {
+                                    const atStart = event.currentTarget.scrollLeft <= 6;
+                                    isAtStartRef.current = atStart;
+                                    setIsAtStart(atStart);
+                                }}
+                                onPointerDown={handleSliderPointerDown}
+                                onPointerMove={handleSliderPointerMove}
+                                onPointerUp={handleSliderPointerUp}
+                                onPointerCancel={handleSliderPointerUp}
+                                onPointerLeave={handleSliderPointerUp}
+                                onLostPointerCapture={handleSliderPointerUp}
+                                className="flex snap-x snap-proximity gap-4 overflow-x-auto px-2 py-1 scroll-smooth scroll-px-2 touch-pan-x select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                            >
                                 {counselingCenterImages.map((image, index) => (
                                     <figure
                                         key={image.id}
@@ -311,52 +311,69 @@ export default function CounselingCenterInfo() {
 
                     {activeImageIndex !== null ? (
                         <div
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-4 py-8"
                             onClick={closePreview}
                             role="dialog"
                             aria-modal="true"
+                            aria-label="Преглед на слика"
                         >
-                            <button
-                                type="button"
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    movePreview(-1);
-                                }}
-                                className="absolute left-4 text-white"
-                                aria-label="Претходна слика"
-                            >
-                                <ChevronLeft className="h-14 w-14" />
-                            </button>
-
-                            <img
-                                src={counselingCenterImages[activeImageIndex].src}
-                                alt={counselingCenterImages[activeImageIndex].alt}
-                                className="max-h-[90vh] max-w-[92vw] object-contain"
-                                onClick={(event) => event.stopPropagation()}
-                            />
-
-                            <button
-                                type="button"
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    movePreview(1);
-                                }}
-                                className="absolute right-4 text-white"
-                                aria-label="Следна слика"
-                            >
-                                <ChevronRight className="h-14 w-14" />
-                            </button>
-
+                            {/* Close button */}
                             <button
                                 type="button"
                                 onClick={(event) => {
                                     event.stopPropagation();
                                     closePreview();
                                 }}
-                                className="absolute top-4 right-4 text-sm font-semibold text-white/85 hover:text-white"
+                                className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                aria-label="Затвори"
                             >
-                                Затвори
+                                <X className="h-6 w-6" />
                             </button>
+
+                            {/* Prev button */}
+                            {counselingCenterImages.length > 1 && (
+                                <button
+                                    type="button"
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        movePreview(-1);
+                                    }}
+                                    className="absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:left-6"
+                                    aria-label="Претходна слика"
+                                >
+                                    <ChevronLeft className="h-7 w-7" />
+                                </button>
+                            )}
+
+                            {/* Next button */}
+                            {counselingCenterImages.length > 1 && (
+                                <button
+                                    type="button"
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        movePreview(1);
+                                    }}
+                                    className="absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6"
+                                    aria-label="Следна слика"
+                                >
+                                    <ChevronRight className="h-7 w-7" />
+                                </button>
+                            )}
+
+                            {/* Image + counter */}
+                            <div
+                                className="flex max-h-full max-w-full flex-col items-center gap-3"
+                                onClick={(event) => event.stopPropagation()}
+                            >
+                                <img
+                                    src={counselingCenterImages[activeImageIndex].src}
+                                    alt={counselingCenterImages[activeImageIndex].alt}
+                                    className="max-h-[80vh] max-w-[90vw] rounded-lg object-contain shadow-2xl"
+                                />
+                                <span className="text-sm font-medium text-white/80">
+                                    {activeImageIndex + 1} / {counselingCenterImages.length}
+                                </span>
+                            </div>
                         </div>
                     ) : null}
 

@@ -133,7 +133,7 @@ export default function InformationAboutUs() {
                         </div>
 
                         <p className="text-lg leading-9 text-gray-700 sm:text-xl">
-                            Кога сме толку силни и јаките, зошто да не кажеме колку сработиле жените од ОЖ "Визија" Кавадарци.
+                            Кога сме толку силни и јаки, зошто да не кажеме колку сработиле жените од ЗРЕ Визија Кавадарци.
                             Со својата посветеност, тие придонесуваат кон создавање на општество во кое жената е позаштитена,
                             поеманципирана, повеќе вработена и активно вклучена во политиката, одлучувањето, домот и заедницата.
                         </p>
@@ -153,7 +153,7 @@ export default function InformationAboutUs() {
                     </Motion.div>
                 </Motion.div>
 
-                <section className="w-full rounded-3xl bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
+                <section className="relative left-1/2 w-screen -translate-x-1/2 bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
                     <Motion.div
                         variants={staggerContainer}
                         initial="hidden"
@@ -227,7 +227,7 @@ export default function InformationAboutUs() {
                     </div>
                 </Motion.div>
 
-                <section className="w-full rounded-3xl bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
+                <section className="relative left-1/2 w-screen -translate-x-1/2 bg-linear-to-br from-purple-100 via-purple-50/50 to-purple-100 py-20">
                     <Motion.div
                         variants={staggerContainer}
                         initial="hidden"
